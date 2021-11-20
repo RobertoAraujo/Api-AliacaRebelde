@@ -1,15 +1,17 @@
-package com.poshyweb.classes;
+package com.poshyweb.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
+
 @Entity
 @Table(name = "localizacao")
-public class Localização implements Serializable {
+public class Localizacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private UUID id;
     @Column(name = "nome")
     private String nome;
     @Column(name = "latitude")
@@ -17,22 +19,22 @@ public class Localização implements Serializable {
     @Column(name = "logitude")
     private int longitude;
 
-    public Localização() {
+    public Localizacao() {
 
     }
 
-    public Localização(int id, String nome, int latitude, int longitude) {
+    public Localizacao(UUID id, String nome, int latitude, int longitude) {
         this.id = id;
         this.nome = nome;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -63,23 +65,19 @@ public class Localização implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Localização that = (Localização) o;
-        return id == that.id && latitude == that.latitude && longitude == that.longitude && Objects.equals(nome, that.nome);
+        if (!(o instanceof Localizacao)) return false;
+        Localizacao that = (Localizacao) o;
+        return getLatitude() == that.getLatitude() && getLongitude() == that.getLongitude() && getId().equals(that.getId()) && getNome().equals(that.getNome());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, latitude, longitude);
+        return Objects.hash(getId(), getNome(), getLatitude(), getLongitude());
     }
 
     @Override
     public String toString() {
-        return "Localização{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
+        return "Localizacao{" + "id=" + id + ", nome='" + nome + '\'' + ", latitude=" + latitude +
+                ", longitude=" + longitude + '}';
     }
 }
