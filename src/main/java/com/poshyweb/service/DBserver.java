@@ -1,5 +1,6 @@
 package com.poshyweb.service;
 
+import com.poshyweb.repository.InventarioRepository;
 import com.poshyweb.repository.LocalizacaoRepository;
 import com.poshyweb.repository.RebeldeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ public class DBserver {
     private LocalizacaoRepository localizacao;
 
     @Autowired
-    private LocalizacaoRepository produto;
+    private InventarioRepository inventario;
 
     @Autowired
     private RebeldeRepository rebelde;

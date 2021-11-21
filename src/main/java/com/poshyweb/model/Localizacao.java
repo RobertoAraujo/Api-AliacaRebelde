@@ -11,7 +11,7 @@ public class Localizacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
     @Column(name = "nome")
     private String nome;
     @Column(name = "latitude")
@@ -19,22 +19,25 @@ public class Localizacao implements Serializable {
     @Column(name = "logitude")
     private int longitude;
 
+    @ManyToOne
+    private Rebelde rebelde;
+
     public Localizacao() {
 
     }
 
-    public Localizacao(UUID id, String nome, int latitude, int longitude) {
+    public Localizacao(Long id, String nome, int latitude, int longitude) {
         this.id = id;
         this.nome = nome;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,7 +80,7 @@ public class Localizacao implements Serializable {
 
     @Override
     public String toString() {
-        return "Localizacao{" + "id=" + id + ", nome='" + nome + '\'' + ", latitude=" + latitude +
-                ", longitude=" + longitude + '}';
+        return "Localizacao{" + "id=" + id + ", nome='" + nome + '\'' +
+                ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
 }

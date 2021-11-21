@@ -12,29 +12,32 @@ public class Rebelde implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
     @Column( name = "nome")
     private String nome;
     @Column(name = "idade")
     private int idade;
     @Column(name = "genero")
-    private char genero;
+    private String genero;
+
+//    @ManyToOne
+////    private Localizacao localizacao;
 
     public Rebelde() {
     }
 
-    public Rebelde(UUID id, String nome, int idade, char genero) {
+    public Rebelde(Long id, String nome, int idade, String genero) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.genero = genero;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,11 +57,11 @@ public class Rebelde implements Serializable {
         this.idade = idade;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -67,7 +70,7 @@ public class Rebelde implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Rebelde)) return false;
         Rebelde rebelde = (Rebelde) o;
-        return getIdade() == rebelde.getIdade() && getGenero() == rebelde.getGenero() && getId().equals(rebelde.getId()) && getNome().equals(rebelde.getNome());
+        return getIdade() == rebelde.getIdade() && getId().equals(rebelde.getId()) && getNome().equals(rebelde.getNome()) && getGenero().equals(rebelde.getGenero());
     }
 
     @Override
@@ -77,7 +80,7 @@ public class Rebelde implements Serializable {
 
     @Override
     public String toString() {
-        return "Rebelde{" + "id=" + id + ", nome='" + nome + '\'' + ", idade=" + idade +
-                ", genero=" + genero + '}';
+        return "Rebelde{" + "id=" + id + ", nome='" + nome + '\'' +
+                ", idade=" + idade + ", genero='" + genero + '\'' + '}';
     }
 }

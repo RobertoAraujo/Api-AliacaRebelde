@@ -1,5 +1,5 @@
 package com.poshyweb.dto;
 
-public class DtoProduto {
+public class DtoInventario {
 
 }

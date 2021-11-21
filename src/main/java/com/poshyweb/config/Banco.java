@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration   // configuraçaõ do perfil
-@Profile("application-teste") // perfil ativo
+@Profile("rebelde") // perfil ativo
 public class Banco {
 
     @Autowired
